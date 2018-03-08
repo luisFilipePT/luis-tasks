@@ -24,6 +24,8 @@ html {
 
 body {
     box-sizing: border-box;
+    background-color: #f7f7f7;
+    background-image: url('../img/clean-gray-paper.png');
 
     @include respond(tab-port) {
         padding: 0;

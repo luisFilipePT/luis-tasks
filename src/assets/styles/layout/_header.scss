@@ -1,0 +1,33 @@
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 9rem;
+    background-color: #06101C;
+
+    &__logo-box {
+        height: 100%;
+        float: left;
+        width: 33.3333%;
+        padding: 2rem;
+
+        img {
+            height: 5rem;
+        }
+    }
+
+    &__btn-add-list-box {
+        height: 100%;
+        float: left;
+        width: 33.3333%;
+    }
+
+    &__active-list {
+        padding: 2rem;
+        height: 100%;
+        float: left;
+        width: 33.3333%;
+    }
+
+}

@@ -1,0 +1,11 @@
+.action-bar {
+    background-color: rgba($color-black, .5);
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 7rem;
+    width: 100%;
+    z-index: 50;
+    padding: 2rem;
+    padding-left: 8.5rem;
+}
