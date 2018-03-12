@@ -208,7 +208,7 @@ export const editTask = (task, activeListId, token, handleClose) => {
             const parsedTask = { ...task };
             delete parsedTask.list;
 
-            if (due || due !== null) parsedTask.due = due.format();
+            if (due || due !== null) parsedTask.due = moment(due).format();
             if (status === 'needsAction') delete parsedTask.completed;
             if (status !== 'needsAction') parsedTask.completed = moment().format();
 
