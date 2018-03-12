@@ -5,7 +5,8 @@ import TaskCard from './task_card';
 
 import { fetchTasks } from '../../actions';
 
-class TasksGrid extends Component {
+// Attention: named export only for tests use the default export in the code
+export class TasksGrid extends Component {
     componentWillMount() {
         if (this.props.activeList !== null) {
             this.props.fetchTasks(this.props.token, this.props.activeList.id);
