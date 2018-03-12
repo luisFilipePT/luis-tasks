@@ -9,7 +9,7 @@
     &__logo-box {
         height: 100%;
         float: left;
-        width: 33.3333%;
+        width: 25%;
         padding: 2rem;
 
         img {
@@ -17,17 +17,25 @@
         }
     }
 
-    &__btn-add-list-box {
+    &__status-box {
         height: 100%;
         float: left;
-        width: 33.3333%;
+        width: 25%;
+
+        span {
+            position: absolute;
+            bottom: .5rem;
+            right: 2rem;
+            font-size: 1rem;
+            color: dodgerblue;
+        }
     }
 
     &__active-list {
         padding: 2rem;
         height: 100%;
         float: left;
-        width: 33.3333%;
+        width: 50%;
     }
 
 }

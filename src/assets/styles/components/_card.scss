@@ -9,7 +9,7 @@
     position: relative;
 
     &:hover {
-        transform: translateY(-1.5rem) scale(1.03);
+        transform: translateY(-1rem) scale(1.03);
     }
 
     &__heading {
@@ -21,21 +21,62 @@
         clip-path: polygon(0 0, 100% 0, 100% 70%, 0 100%);
         border-top-left-radius: 3px;
         border-top-right-radius: 3px;
+        padding-top: .5rem;
+    }
+
+    &__done-status {
+        color: $color-primary-dark;
+        font-size: 1.5rem;
+        cursor: pointer;
+        padding-left: 1rem;
+        width: 25%;
+        display: inline-block;
+    }
+
+    &__show-action {
+        text-align: center;
+        width: 25%;
+        display: inline-block;
+        color: dodgerblue;
+        font-size: 1.5rem;
+        cursor: pointer;
+    }
+
+    &__edit-action {
+        width: 25%;
+        text-align: center;
+        display: inline-block;
+        color: dodgerblue;
+        font-size: 1.5rem;
+        cursor: pointer;
+    }
+
+    &__trash-action {
+        text-align: right;
+        width: 25%;
+        display: inline-block;
+        color: red;
+        font-size: 1.5rem;
+        cursor: pointer;
+        padding-right: 1rem;
     }
 
     &__title {
         -webkit-box-decoration-break: clone;
         box-decoration-break: clone;
-        font-size: 2.8rem;
+        font-size: 2.2rem;
         font-weight: 300;
         text-transform: uppercase;
         text-align: right;
         color: $color-white;
         width: 75%;
         position: absolute;
-        margin-top: -8.5rem;
+        margin-top: -6.5rem;
         margin-right: 2rem;
         padding: 1rem 1.5rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
         background-image: linear-gradient(to right bottom,
                 rgba($color-tertiary-light, .85),
                 rgba($color-tertiary-dark, .85)
@@ -44,5 +85,14 @@
 
     &__description {
         padding: 1rem;
+        height: 20rem;
+        overflow: scroll;
+
+        &--due {
+            position: absolute;
+            bottom: 1rem;
+            right: 1rem;
+            font-size: 1.2rem;
+        }
     }
 }

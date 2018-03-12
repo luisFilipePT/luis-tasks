@@ -1,18 +1,102 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import moment from 'moment';
+import { connect } from 'react-redux';
 
-export class TaskCard extends Component {
+import withModal from '../hocs/with_modal';
+
+import DeleteModal from '../modals/delete_modal';
+import CreateTaskModal from '../modals/create_task_modal';
+
+import { deleteTask, editTask } from '../../actions';
+
+class TaskCard extends Component {
+    constructor(props) {
+        super(props);
+        const funcsToBind = [
+            'toggleCompleted',
+            'showTask',
+            'editTask',
+            'deleteTask',
+        ];
+        funcsToBind.forEach((f) => {
+            this[f] = this[f].bind(this);
+        });
+
+        this.state = {
+            activeModal: null,
+        };
+    }
+
+    toggleCompleted() {
+        const { task, token, activeList } = this.props;
+        const nextStatus = task.status === 'needsAction' ? 'completed' : 'needsAction';
+        this.props.editTask({ ...task, status: nextStatus, list: activeList.id }, activeList.id, token);
+    }
+
+    showTask() {
+        // TODO show task
+    }
+
+    editTask() {
+        const { task } = this.props;
+        this.setState({
+            activeModal: <CreateTaskModal
+                task={task}
+                handleClose={this.props.handleCloseModal}/>,
+        }, () => {
+            this.props.handleOpenModal();
+        });
+    }
+
+    deleteTask() {
+        const { id, title } = this.props.task;
+        this.setState({
+            activeModal: <DeleteModal
+                deleteId={id}
+                message={`Are you sure you want to delete the task ${title}? It cannot be undone.`}
+                handleClose={this.props.handleCloseModal}
+                deleteAction={this.props.deleteTask}/>,
+        }, () => {
+            this.props.handleOpenModal();
+        });
+    }
+
     render() {
+        const { renderModal, task } = this.props;
+        const { title, notes, status, due } = task;
+
         return (
             <div className="card">
                 <div className="card__heading">
-                    &nbsp;
+                    {status === 'needsAction' &&
+                    <span className="card__done-status" onClick={this.toggleCompleted}><i className="far fa-square"/></span>}
+                    {status !== 'needsAction' &&
+                    <span className="card__done-status" onClick={this.toggleCompleted}><i className="far fa-check-square"/></span>}
+                    <span className="card__show-action" onClick={this.showTask}><i className="fas fa-eye"/></span>
+                    <span className="card__edit-action" onClick={this.editTask}><i className="fas fa-pencil-alt"/></span>
+                    <span className="card__trash-action" onClick={this.deleteTask}><i className="fas fa-trash"/></span>
                 </div>
-                <h4 className="card__title">Title</h4>
+                {title.length > 0 && <h4 className="card__title">{title}</h4>}
                 <div className="card__description paragraph">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores at commodi non omnis praesentium veniam. Aspernatur atque, commodi delectus libero maiores maxime minima natus nemo perspiciatis placeat, sunt, vitae voluptatibus.</p>
+                    <p>{notes}</p>
+                    {due && <p className="card__description--due">Due at: {moment(due).format('dddd, MMMM Do YYYY')}</p>}
                 </div>
+                {renderModal(this.state.activeModal)}
             </div>
         );
     }
 }
+
+function mapStateToProps({ auth, task }) {
+    const { token } = auth;
+    const { activeList } = task;
+
+    return {
+        token,
+        activeList,
+    };
+}
+
+export default connect(mapStateToProps, {
+    deleteTask, editTask,
+})(withModal(TaskCard));

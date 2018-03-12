@@ -61,3 +61,13 @@
         transition: all .4s;
     }
 }
+
+.btn-modal-close {
+    background-color: whitesmoke;
+    position: absolute;
+    border: none;
+    cursor: pointer;
+    font-size: 2rem;
+    top: 1.5rem;
+    left: 1.5rem;
+}

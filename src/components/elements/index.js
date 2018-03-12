@@ -1,6 +1,4 @@
+// exports some components in a way that are easier to import
 export * from './navbar';
-export * from './sidebar';
 export * from './footer';
-export * from './action_bar';
-export * from './task_card';
-export * from './tasks_grid';
+export * from './loader';

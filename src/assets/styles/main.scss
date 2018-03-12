@@ -1,5 +1,10 @@
+/*
+The Sass code is not documented. It follows a pattern known as the 7 file pattern and implements BEM methodology
+Notice: Due to the deadline some pieces of "spaghetti" code are in fact present (sorry :))
+*/
+
 // Abstracts
-@import "abstracts/mixins";
+@import "abstracts/mixins"; // common use mixins and media query mixins
 @import "abstracts/variables";
 
 // Base
@@ -13,6 +18,7 @@
 @import "components/action-bar";
 @import "components/card";
 @import "components/button";
+@import "components/form";
 
 // Layout
 @import "layout/grid";

@@ -1,10 +1,10 @@
 .sidebar {
     background-color: rgba($color-black, .05);
     width: 25rem;
-    height: calc(100vh - 150px);
-    position: fixed;
-    top: 90px;
-    border-right: 1px solid $color-grey-light-2;
+    height: calc(100vh - 15rem);
+    position: absolute;
+    top: 9rem;
+    box-shadow: -2px 0 0 -1px $color-grey-light-2;
 
     &__btn-new-list-box {
         background-color: rgba($color-black, .5);
@@ -58,6 +58,7 @@
         box-shadow: 0 1.5rem 4rem rgba(black, .15);
         z-index: 1;
         border-radius: 3px;
+        font-size: 1.2rem;
         transition: opacity .5s;
 
         a {

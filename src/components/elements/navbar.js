@@ -4,7 +4,14 @@ import PropTypes from 'prop-types';
 import dummyLogo from '././../../assets/img/the-web-works.svg';
 
 export class NavBar extends Component {
+    static propTypes = {
+        content: PropTypes.string.isRequired,
+        loading: PropTypes.bool.isRequired,
+    };
+
     render() {
+        const { content, loading } = this.props;
+
         return (
             <header className="header">
                 <div className="header__logo-box">
@@ -13,12 +20,12 @@ export class NavBar extends Component {
                 <div className="header__active-list">
                     <div className="u-center-text">
                         <h2 className="heading-secondary">
-                            Luis`s list
+                            {content}
                         </h2>
                     </div>
                 </div>
-                <div className="header__btn-add-list-box">
-                    save
+                <div className="header__status-box">
+                    <span>{loading ? 'Loading...' : 'All saved'}</span>
                 </div>
             </header>
         );
