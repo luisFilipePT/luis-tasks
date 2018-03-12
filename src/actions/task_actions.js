@@ -1,4 +1,5 @@
 import axios, { get, post, put } from 'axios';
+import moment from 'moment';
 
 // Notice: this file does not look very DRY and appears to have very repeated code. True, but in a real use case there would be
 // actions and data to change in each case, and this structure allows for a much easier growth of the application in complexity and features
@@ -209,6 +210,7 @@ export const editTask = (task, activeListId, token, handleClose) => {
 
             if (due || due !== null) parsedTask.due = due.format();
             if (status === 'needsAction') delete parsedTask.completed;
+            if (status !== 'needsAction') parsedTask.completed = moment().format();
 
             // tricky part since could not figure out the API move action (keeps returning 400)
             // so the workaround is:
