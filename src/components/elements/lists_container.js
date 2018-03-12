@@ -9,6 +9,7 @@ import { deleteList, fetchTaskLists, updateList, changeList } from '../../action
 import DeleteModal from '../modals/delete_modal';
 import RenameListModal from '../modals/rename_list_modal';
 
+// Attention: named export only for tests use the default export in the code
 export class ListsContainer extends Component {
     constructor(props) {
         super(props);

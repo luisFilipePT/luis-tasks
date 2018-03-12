@@ -2,9 +2,6 @@ import React from 'react';
 import { shallow, mount } from 'enzyme';
 import configureStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
-import { MemoryRouter as Router } from 'react-router-dom';
-// import mockAxios from 'jest-mock-axios';
-import axios from 'axios';
 
 import { ListsContainer } from '../components/elements/lists_container';
 
@@ -23,58 +20,12 @@ const store = mockStore({
     },
 });
 
-const updatedStore = mockStore({
-    auth: {
-        token: null,
-    },
-    task: {
-        lists: [{ title: 'xpto', id: 1 }],
-        tasks: [],
-        activeList: null,
-        isFetching: false,
-    },
-});
-
 // clear all mocks between tests
 afterEach(() => {
     // cleaning up the mess left behind the previous test
 });
 
-const nextTick = async () => {
-    return new Promise((resolve) => {
-        setTimeout(resolve, 0);
-    });
-};
-
-const dummyList = [{
-    id: 1,
-    title: 'Dummy List',
-}];
-
-jest.mock('axios', () => {
-    const exampleArticles = {
-        data: {
-            items: [{
-                id: 1,
-                title: 'Dummy List',
-            }],
-        },
-    };
-
-    return {
-        get: jest.fn(() => Promise.resolve(exampleArticles)),
-    };
-});
-
 describe('List tasks', () => {
-    // it('fetch lists on #componentDidMount', () => {
-    //     const app = mount(<ListsContainer store={store}/>);
-    //     app.instance().componentDidMount();
-    //     console.log('app.state', app.state());
-    //     expect(axios.get).toHaveBeenCalled();
-    // });
-
-
     it('renders the list container with no tasks lists', () => {
         const props = {
             lists: [],

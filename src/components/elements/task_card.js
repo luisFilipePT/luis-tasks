@@ -9,7 +9,8 @@ import CreateTaskModal from '../modals/create_task_modal';
 
 import { deleteTask, editTask } from '../../actions';
 
-class TaskCard extends Component {
+// Attention: named export only for tests use the default export in the code
+export class TaskCard extends Component {
     constructor(props) {
         super(props);
         const funcsToBind = [
@@ -35,6 +36,7 @@ class TaskCard extends Component {
 
     showTask() {
         // TODO show task
+        console.log('TODO show task');
     }
 
     editTask() {
