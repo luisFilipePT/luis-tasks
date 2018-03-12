@@ -1,5 +1,7 @@
 # Google Task API demo wrapper
 
+![sample screen](https://github.com/luisFilipePT/luis-tasks/blob/master/screen.png "Sample screen")
+
 ### Before Getting Started
 
 You need to have a recent version of [NodeJS](https://nodejs.org/en/) and [npm](https://www.npmjs.com) installed.
