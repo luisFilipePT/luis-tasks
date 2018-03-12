@@ -6,6 +6,7 @@ import withModal from '../hocs/with_modal';
 
 import DeleteModal from '../modals/delete_modal';
 import CreateTaskModal from '../modals/create_task_modal';
+import ShowTaskModal from '../modals/show_task_modal';
 
 import { deleteTask, editTask } from '../../actions';
 
@@ -35,8 +36,14 @@ export class TaskCard extends Component {
     }
 
     showTask() {
-        // TODO show task
-        console.log('TODO show task');
+        const { task } = this.props;
+        this.setState({
+            activeModal: <ShowTaskModal
+                task={task}
+                handleClose={this.props.handleCloseModal}/>,
+        }, () => {
+            this.props.handleOpenModal();
+        });
     }
 
     editTask() {
